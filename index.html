@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horário Oficial de Brasília</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="hora">
+    <script>
+        {const zeroFill = n => {
+            return ('0' + n).slice(-2);
+        }
+
+        const interval = setInterval(() => {
+            const now = new Date();
+        
+            const Hora = zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
+        
+            document.getElementById('hora').innerHTML = Hora;
+        }, 1000);
+
+        const options = {
+            timeZone: 'America/Sao_Paulo',
+            hour: 'numeric',
+            minute: 'numeric'
+            };
+        const date = new Intl.DateTimeFormat([], options);
+        console.log(date.format(new Date()));
+		}
+    </script>
+    </div>     
+        
+    <div id="data">
+	<script>
+        const zeroFill = n => {
+            return ('0' + n).slice(-2);
+        }
+
+        const interval = setInterval(() => {
+            const now = new Date();
+		
+            const data = zeroFill(now.getUTCDate()) + '/' + zeroFill((now.getMonth() + 1)) + '/' + now.getFullYear();
+            document.getElementById('data').innerHTML = data;
+        }, 1000);
+		
+		const options = {
+            timeZone: 'America/Sao_Paulo',
+            hour: 'numeric',
+            minute: 'numeric'
+            };
+        const date = new Intl.DateTimeFormat([], options);
+        console.log(date.format(new Date()));
+    </script>
+    </div>
+</body>
+</html>
